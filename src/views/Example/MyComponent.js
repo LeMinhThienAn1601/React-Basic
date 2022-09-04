@@ -3,14 +3,18 @@ import React from "react";
 class MyComponent extends React.Component {
 
     state = {
-        // name: 'Thien An',
-        // age: '22'
+        name: 'Thien An',
+        age: '22'
     }
 
     handleOnChangeName = (event) => {
         this.setState({
             name: event.target.value
         })
+    }
+
+    handleClickButton = () => {
+        alert('Clickkk');
     }
 
     render() {
@@ -26,6 +30,10 @@ class MyComponent extends React.Component {
             
                 <div className="second">
                     My age: {this.state.age}
+                </div>
+
+                <div className="third">
+                    <button onClick={()=> this.handleClickButton()}>click me</button>
                 </div>
             </>
         )
