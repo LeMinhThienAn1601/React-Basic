@@ -3,38 +3,44 @@ import React from "react";
 class MyComponent extends React.Component {
 
     state = {
-        name: 'Thien An',
-        age: '22'
+        firstName: "",
+        lastName: ""
     }
 
-    handleOnChangeName = (event) => {
+    handleChangeFirstName = (event) => {
         this.setState({
-            name: event.target.value
+            firstName: event.target.value
         })
     }
 
-    handleClickButton = () => {
-        alert('Clickkk');
+    handleChangeLastName = (event) => {
+        this.setState({
+            lastName: event.target.value
+        })
     }
 
+    handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(">>>Check: ", this.state)
+    }
+    
     render() {
         
         return (
             <>
-                <div className="first">
-                    <input value={this.state.name} type="text"
-                    onChange={(event) => this.handleOnChangeName(event)}
+                <form>
+                    <label htmlFor="fname">First Name: </label><br/>
+                    <input type="text" value={this.state.firstName}
+                    onChange={(event) => this.handleChangeFirstName(event)}/>
+                    <br/>
+                    <label htmlFor="lname">Last Name: </label><br/>
+                    <input type={"text"} value={this.state.lastName}
+                    onChange={(event) => this.handleChangeLastName(event)}/>
+                    <br/>
+                    <input type={"submit"} value={"Submit"}
+                    onClick={(event) => this.handleSubmit(event)}
                     />
-                    My name is {this.state.name}
-                </div>
-            
-                <div className="second">
-                    My age: {this.state.age}
-                </div>
-
-                <div className="third">
-                    <button onClick={()=> this.handleClickButton()}>click me</button>
-                </div>
+                </form>
             </>
         )
     }
